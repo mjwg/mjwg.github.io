@@ -1,0 +1,268 @@
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300&display=swap" rel="stylesheet">
+<div class="intro">
+    <style>
+        .logo {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Poppins', sans-serif;
+        }
+
+        header {
+            position: relative;
+            left: 0;
+            top: 0;
+            width: 1005;
+            height: 80px;
+        }
+
+        header h4 {
+            position:absolute;
+            left: 10%;
+            bottom: 1rem;
+            font-size: 1.6rem;
+        }
+
+        /*splash*/
+        .intro{
+            position: fixed;
+            z-index: 1;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100vh;
+            background-color: #161616;
+            transition: 1s;
+        }
+
+        .logo-header{
+            position: absolute;
+            top: 40%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            color: #ffffff;
+        }
+
+        .logo{
+            position: relative;
+            display: inline-block;
+            bottom: -20px;
+            opacity: 0;
+        }
+
+        .logo.active{
+            bottom: 0;
+            opacity: 1;
+            transition: ease-in-out 0.5;
+        }
+
+        .logo.fade{
+            bottom: 150px;
+            opacity: 0;
+            transition: ease-in-out 0.5;
+        }
+    </style>
+
+    <h1 class="logo-header">
+        <span class="logo">Strongdog</span><span class="logo" style="color:orange">XP</span>
+    </h1>
+</div>
+
+<script>
+    let intro = document.querySelector('.intro');
+    let logo = document.querySelector('.logo-header');
+    let logoSpan = document.querySelectorAll('.logo')
+
+    window.addEventListener('DOMContentLoaded', ()=>{
+
+        setTimeout(()=>{
+            logoSpan.forEach((span, idx)=>{
+                setTimeout(()=>{
+                    span.classList.add('active');
+                }, (idx + 1) * 400)
+            })
+
+            setTimeout(()=>{
+                logoSpan.forEach((span, idk)=>{
+                    setTimeout(()=>{
+                        span.classList.remove('active');
+                        span.classList.add('fade');
+                    }, (idx + 1) * 50)
+                })
+            },2000);
+
+            setTimeout(()=>{
+                intro.style.top = '-100vh';
+            }, 2300)
+
+        })
+    })
+</script>
+
+
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta http-equiv="content-type" content="text/html; charset=UTF8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="#382C2A" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" />
+
+    <title>Bad Ice Cream 2 | 3kh0</title>
+    <link rel="icon" href="/favicon.ico">
+
+    <script src="poki.js"></script>
+    <script type="text/javascript" src="./js/loader.js"></script>
+    <script type="text/javascript" src="./js/virtualJoystickSkinMod.js"></script>
+    <script type="text/javascript" src="./preloader/nitromePreloader.js"></script>
+    <script src="/js/main.js"></script>
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+      }
+
+      canvas {
+        outline: none;
+      }
+
+      html,
+      body,
+      #container {
+        margin: 0;
+        overflow: hidden;
+        width: 100%;
+        height: 100%;
+        background-color: #9badbe;
+      }
+
+      #splash {
+        position: absolute;
+        visibility: hidden;
+        z-index: 10;
+      }
+
+      #splash__image {
+        position: absolute;
+        background-size: contain;
+        background-position: center;
+        background-repeat: no-repeat;
+        background-image: url("assets/badicecream_splash.jpg");
+        visibility: visible;
+        transition: opacity 0.5s;
+        z-index: 10;
+      }
+
+      #progress__root {
+        position: absolute;
+      }
+
+      #progress__line {
+        width: 0;
+        height: 100%;
+        transition: all 0.5s;
+      }
+    </style>
+  </head>
+
+  <body>
+    <div id="splash__image">
+      <div id="progress__root">
+        <div id="progress__line"></div>
+      </div>
+    </div>
+
+    <script>
+      window.addEventListener("load", () => {
+        PokiSDK.setDebugTouchOverlayController(true);
+
+        PokiSDK.init()
+          .then(() => {
+            // successfully initialized
+            onPokiInitComplete(false);
+          })
+          .catch(() => {
+            // successfully initialized but the user has adblock
+            onPokiInitComplete(true);
+          });
+
+        let config;
+
+        config = {
+          title: "BadIceCream 2",
+          filename: "BadIceCream2",
+          pokiSDK: true,
+          debugPoki: false,
+          showFPS: false,
+          debug: false,
+          splash: "assets/badicecream_splash.jpg",
+          start: null,
+          width: 550,
+          height: 550,
+          x: 0,
+          y: 0,
+          w: "100%",
+          h: "100%",
+          stageScaleMode: null,
+          stageAlign: null,
+          progressParserWeigth: 1,
+          progress: {
+            direction: "lr",
+            back: "#35809e",
+            line: "#070bff",
+            rect: [0.25, 0.65, 0.5, 0.03],
+          },
+          skipFramesOfScene: null,
+          buttonPokiSDKActions: null,
+          retryButtonIDS: null,
+          retryButtonAction: null,
+          actionOnStop: null,
+          actionWhenRetryButtonEncountered: null,
+          binary: [
+            {
+              name: "BadIceCream2",
+              path: "assets/BadIceCream2_sdk.swf",
+              size: 3207867,
+              resourceType: "GAME",
+            },
+          ],
+          runtime: "js/BadIceCream.js",
+        };
+
+        PokiSDK.setDebug(config.debugPoki);
+
+        Loader.init(config);
+
+        let onPokiInitComplete = (adBlocked) => {
+          PokiSDK.adBlocked = adBlocked;
+          PokiSDK.gameLoadingStart();
+
+          Loader.runGame(
+            (fill) => {
+              PokiSDK.gameLoadingProgress({
+                percentageDone: fill,
+                kbLoaded: 0,
+                kbTotal: 0,
+                fileNameLoaded: "",
+                filesLoaded: 0,
+                filesTotal: 0,
+              });
+              window.nitromePreloaderSetProgress(fill / 1.0);
+            },
+            (instance) => {
+              PokiSDK.gameLoadingFinished();
+              window.nitromePreloaderSetComplete();
+            }
+          );
+        };
+        window.nitromePreloaderInit("bad-ice-cream-2");
+      });
+    </script>
+  </body>
+</html>

@@ -1,0 +1,78 @@
+window.paceOptions = {
+	target: "#gem"
+};
+
+var gem = {};
+
+(function() {
+	var engine = "engine/gem/";
+	var components   = "components/";
+	var libs   = "engine/libs/";
+	var data   = "data/";
+
+	head.js(
+		//components+"modernizr/modernizr.min.js",
+
+		components+"pace/pace.min.js",
+
+		components+"jquery/jquery.min.js",
+		components+"jquery/jquery.imgpreload.min.js",
+		components+"lodash/lodash.min.js?ver=4.17.11",
+		components+"velocity/velocity.min.js?ver=1.5.2",
+		components+"howler/howler.min.js?ver=2.1.2",
+		components+"mousetrap/mousetrap.min.js?ver=1.6.3",
+
+		"engine/gem.min.js?ver=1.0.3",
+
+		//engine+"gem.js",
+		//
+		//engine+"world/world.js",
+		//engine+"world/scene.js",
+		//engine+"world/poi.js",
+		//engine+"world/inventory.js",
+		//engine+"world/data.js",
+		//engine+"world/state.js",
+		//
+		//engine+"actions/action.js",
+		//engine+"actions/actionLibrary.js",
+		//engine+"actions/sequenceAction.js",
+		//engine+"actions/dialogueAction.js",
+		//engine+"actions/useWithAction.js",
+		//engine+"actions/stateAction.js",
+		//
+		//engine+"ui/hud.js",
+		//engine+"ui/map.js",
+		//engine+"ui/mainMenuWidget.js",
+		//engine+"ui/inGameMenuWidget.js",
+		//engine+"ui/loadSaveWindowWidget.js",
+		//engine+"ui/inputDialogWidget.js",
+		//engine+"ui/confirmationDialogWidget.js",
+		//engine+"ui/actionMenuWidget.js",
+		//engine+"ui/dialogueWidget.js",
+		//engine+"ui/dialogueOptionsWidget.js",
+		//engine+"ui/textWidget.js",
+		//engine+"ui/inventoryWidget.js",
+		//engine+"ui/importExportWindowWidget.js",
+		//engine+"ui/creditsWidget.js",
+		//engine+"ui/loaderWidget.js",
+		//
+		//engine+"utils/fx.js",
+		//engine+"utils/dj.js",
+		//engine+"utils/imgLoader.js",
+		//engine+"utils/jsLoader.js",
+		//engine+"utils/lang.js",
+
+		//engine+"devTools/devTools.js",
+		//engine+"devTools/dialogueInspector.js",
+
+		//preload game data
+
+		data+"journey.js?ver=1.0.3",
+		data+"scenes/ui/inventory.js?ver=1.0.3",
+		data+"scenes/ui/notebook.js?ver=1.0.3",
+
+		function() {
+			gem.init();
+		}
+	);
+})();

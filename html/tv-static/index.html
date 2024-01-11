@@ -1,0 +1,174 @@
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300&display=swap" rel="stylesheet">
+<div class="intro">
+    <style>
+        .logo {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Poppins', sans-serif;
+        }
+
+        header {
+            position: relative;
+            left: 0;
+            top: 0;
+            width: 1005;
+            height: 80px;
+        }
+
+        header h4 {
+            position:absolute;
+            left: 10%;
+            bottom: 1rem;
+            font-size: 1.6rem;
+        }
+
+        /*splash*/
+        .intro{
+            position: fixed;
+            z-index: 1;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100vh;
+            background-color: #161616;
+            transition: 1s;
+        }
+
+        .logo-header{
+            position: absolute;
+            top: 40%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            color: #ffffff;
+        }
+
+        .logo{
+            position: relative;
+            display: inline-block;
+            bottom: -20px;
+            opacity: 0;
+        }
+
+        .logo.active{
+            bottom: 0;
+            opacity: 1;
+            transition: ease-in-out 0.5;
+        }
+
+        .logo.fade{
+            bottom: 150px;
+            opacity: 0;
+            transition: ease-in-out 0.5;
+        }
+    </style>
+
+    <h1 class="logo-header">
+        <span class="logo">Strongdog</span><span class="logo" style="color:orange">XP</span>
+    </h1>
+</div>
+
+<script>
+    let intro = document.querySelector('.intro');
+    let logo = document.querySelector('.logo-header');
+    let logoSpan = document.querySelectorAll('.logo')
+
+    window.addEventListener('DOMContentLoaded', ()=>{
+
+        setTimeout(()=>{
+            logoSpan.forEach((span, idx)=>{
+                setTimeout(()=>{
+                    span.classList.add('active');
+                }, (idx + 1) * 400)
+            })
+
+            setTimeout(()=>{
+                logoSpan.forEach((span, idk)=>{
+                    setTimeout(()=>{
+                        span.classList.remove('active');
+                        span.classList.add('fade');
+                    }, (idx + 1) * 50)
+                })
+            },2000);
+
+            setTimeout(()=>{
+                intro.style.top = '-100vh';
+            }, 2300)
+
+        })
+    })
+</script>
+
+
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <link rel="icon" sizes="192x192" href="static.png" />
+        <link rel="shortcut icon" href="static.png" type="image/x-icon" />
+        <link rel="apple-touch-icon" href="static.png" type="image/x-icon" />
+        <meta charset="utf-8" />
+        <meta http-equiv="x-ua-compatible" content="ie=edge" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
+        <script src="script.js"></script>
+        <link rel="stylesheet" type="text/css" href="style.css" />
+        <title>Static TV</title>
+        <script type="application/javascript" src="/js/main.js"></script>
+        <link rel="canonical" href="https://3kh0.github.io/" />
+        <meta content="https://3kh0.github.io/projects/tv-static" property="og:url" />
+        <meta content="https://3kh0.github.io/projects/tv-static/static.png" property="og:image" />
+        <meta content="#000000" data-react-helmet="true" name="theme-color" />
+        <meta name="title" content="Fake TV static" />
+        <meta name="description" content="You might remember the static TV noise with vibrating random black and white dots from old analog TVs. This screen will bring this effect back on your computer." />
+        <meta name="keywords" content="static, tv, fake, troll, website, github" />
+        <meta name="robots" content="index, follow" />
+        <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+        <meta name="language" content="English" />
+        <meta name="revisit-after" content="1 days" />
+        <meta name="author" content="3kh0" />
+    </head>
+    <body>
+        <div id="container">
+            <div class="grained"></div>
+        </div>
+
+        <div class="grainpopup">
+            <span class="helper"></span>
+            <div>
+                <div title="Close" class="popupCloseButton">X</div>
+                <h1>Static TV Noise Screen</h1>
+                <p class="intro">You might remember the static TV noise with vibrating random black and white dots from old analog TVs. This screen will bring this effect back on your computer.</p>
+                <p>
+                    Make sure you have <br />
+                    Full Screen enabled (<strong>F11 button</strong>)!
+                </p>
+                <p>(Go to the <a href="/">home page here</a>)</p>
+            </div>
+        </div>
+        <div class="gradientFrame"></div>
+    </body>
+    <script>
+        var options = {
+            animate: true,
+            patternWidth: 285.56,
+            patternHeight: 42.42,
+            grainOpacity: 1,
+            grainDensity: 1.5,
+            grainWidth: 1.89,
+            grainHeight: 1.5,
+        };
+        grained("#container", options);
+    </script>
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-98DP5VKS42"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-98DP5VKS42');
+</script>
+</html>

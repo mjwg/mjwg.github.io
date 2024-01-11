@@ -1,0 +1,151 @@
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300&display=swap" rel="stylesheet">
+<div class="intro">
+    <style>
+        .logo {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Poppins', sans-serif;
+        }
+
+        header {
+            position: relative;
+            left: 0;
+            top: 0;
+            width: 1005;
+            height: 80px;
+        }
+
+        header h4 {
+            position:absolute;
+            left: 10%;
+            bottom: 1rem;
+            font-size: 1.6rem;
+        }
+
+        /*splash*/
+        .intro{
+            position: fixed;
+            z-index: 1;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100vh;
+            background-color: #161616;
+            transition: 1s;
+        }
+
+        .logo-header{
+            position: absolute;
+            top: 40%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            color: #ffffff;
+        }
+
+        .logo{
+            position: relative;
+            display: inline-block;
+            bottom: -20px;
+            opacity: 0;
+        }
+
+        .logo.active{
+            bottom: 0;
+            opacity: 1;
+            transition: ease-in-out 0.5;
+        }
+
+        .logo.fade{
+            bottom: 150px;
+            opacity: 0;
+            transition: ease-in-out 0.5;
+        }
+    </style>
+
+    <h1 class="logo-header">
+        <span class="logo">Strongdog</span><span class="logo" style="color:orange">XP</span>
+    </h1>
+</div>
+
+<script>
+    let intro = document.querySelector('.intro');
+    let logo = document.querySelector('.logo-header');
+    let logoSpan = document.querySelectorAll('.logo')
+
+    window.addEventListener('DOMContentLoaded', ()=>{
+
+        setTimeout(()=>{
+            logoSpan.forEach((span, idx)=>{
+                setTimeout(()=>{
+                    span.classList.add('active');
+                }, (idx + 1) * 400)
+            })
+
+            setTimeout(()=>{
+                logoSpan.forEach((span, idk)=>{
+                    setTimeout(()=>{
+                        span.classList.remove('active');
+                        span.classList.add('fade');
+                    }, (idx + 1) * 50)
+                })
+            },2000);
+
+            setTimeout(()=>{
+                intro.style.top = '-100vh';
+            }, 2300)
+
+        })
+    })
+</script>
+
+
+<!DOCTYPE html>
+<html lang="en-us">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+        <title>Drive Mad Unblocked - UBG365</title>
+        <script type="text/javascript" src="Jump_Gamemonetize.js"></script>
+        <meta name="description" content="">
+        <meta name="google" content="notranslate">
+        <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+        <link rel="stylesheet" href="webapp/fancade.css">
+        <link rel="icon" href="">
+        <script src="/js/main.js"></script>
+    </head>
+    <body id="body">
+        <div id="modal_parent">
+            <div id="modal_content">
+                <span id="modal_close_button">&times;</span>
+                <div id="store_link_modal_content" class="modal_inner"></div>
+                <div id="share_file_modal_content" class="modal_inner"></div>
+            </div>
+        </div>
+        <div id="canvas_border" class="emscripten_border">
+            <div id="play_content" class="middle center">
+                <div class="edge">
+                    <div class="box">
+                        <div class="black">
+                            <img src="webapp/cover.jpg" class="cover">
+                            <p class="title">Drive Mad Unblocked</p>
+                            <p class="author">Martin Magni</p>
+                        </div>
+                    </div>
+                </div>
+                <div id="progress_or_play">
+                    <progress id="progress" class="loading" value="0" max="100"></progress>
+                </div>
+                <p class="description"></p>
+            </div>
+            <canvas class="emscripten" id="canvas" tabindex="-1"></canvas>
+            <div id="gradient"></div>
+            <div id="webview_content"></div>
+        </div>
+        <script type="text/javascript" src="webapp/source_min.js"></script>
+        <script type="text/javascript" src="webapp/index.js"></script>
+    </body>
+</html>

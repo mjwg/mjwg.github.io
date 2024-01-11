@@ -1,0 +1,146 @@
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300&display=swap" rel="stylesheet">
+<div class="intro">
+    <style>
+        .logo {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Poppins', sans-serif;
+        }
+
+        header {
+            position: relative;
+            left: 0;
+            top: 0;
+            width: 1005;
+            height: 80px;
+        }
+
+        header h4 {
+            position:absolute;
+            left: 10%;
+            bottom: 1rem;
+            font-size: 1.6rem;
+        }
+
+        /*splash*/
+        .intro{
+            position: fixed;
+            z-index: 1;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100vh;
+            background-color: #161616;
+            transition: 1s;
+        }
+
+        .logo-header{
+            position: absolute;
+            top: 40%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            color: #ffffff;
+        }
+
+        .logo{
+            position: relative;
+            display: inline-block;
+            bottom: -20px;
+            opacity: 0;
+        }
+
+        .logo.active{
+            bottom: 0;
+            opacity: 1;
+            transition: ease-in-out 0.5;
+        }
+
+        .logo.fade{
+            bottom: 150px;
+            opacity: 0;
+            transition: ease-in-out 0.5;
+        }
+    </style>
+
+    <h1 class="logo-header">
+        <span class="logo">Strongdog</span><span class="logo" style="color:orange">XP</span>
+    </h1>
+</div>
+
+<script>
+    let intro = document.querySelector('.intro');
+    let logo = document.querySelector('.logo-header');
+    let logoSpan = document.querySelectorAll('.logo')
+
+    window.addEventListener('DOMContentLoaded', ()=>{
+
+        setTimeout(()=>{
+            logoSpan.forEach((span, idx)=>{
+                setTimeout(()=>{
+                    span.classList.add('active');
+                }, (idx + 1) * 400)
+            })
+
+            setTimeout(()=>{
+                logoSpan.forEach((span, idk)=>{
+                    setTimeout(()=>{
+                        span.classList.remove('active');
+                        span.classList.add('fade');
+                    }, (idx + 1) * 50)
+                })
+            },2000);
+
+            setTimeout(()=>{
+                intro.style.top = '-100vh';
+            }, 2300)
+
+        })
+    })
+</script>
+
+
+
+<!DOCTYPE html>
+
+<html lang="en-us">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <title>Boxing Physics</title>
+    <meta name="viewport" content="width=device-width">
+    <link href="style.css" rel="stylesheet">
+    <link href="style2.css" rel="stylesheet">
+    <script src="lib.js" type="text/javascript"></script>
+    <script src="browser_detector.js" type="text/javascript"></script>
+    <script src="sound_enabler.js" type="text/javascript"></script>
+    <script src="metrika.js" type="text/javascript"></script>
+    <script src="game.js" type="text/javascript"></script>
+    <script src="UnityProgress.js"></script>
+  <script>
+  var Module = {
+    TOTAL_MEMORY: 268435456,
+    errorhandler: null,			// arguments: err, url, line. This function must return 'true' if the error is handled, otherwise 'false'
+    compatibilitycheck: null,
+    dataUrl: "WebGLBoxingPhysics.data",
+    codeUrl: "WebGLBoxingPhysics.js",
+    memUrl: "WebGLBoxingPhysics.mem",
+  };
+</script><link rel="canonical" href="https://www.y8.com/games/boxing_physics">
+</head>
+  <body class="template">
+    <div id="container" class="container webgl-content template-wrap clear">
+      <canvas class="emscripten" id="canvas" oncontextmenu="event.preventDefault()" width="960" height="600"></canvas>
+      <div class="footer">
+        <div class="unity disable"></div>
+        <div class="webgl enable"></div>
+        <h1 class="game-name">Boxing Physics</h1>
+        <div class="fullscreen" onclick="SetFullscreen(1)">Maximize</div>
+      </div>
+    </div>
+  <script src="_UnityLoader.js"></script>
+</body>
+</html>

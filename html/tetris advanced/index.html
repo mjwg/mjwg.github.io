@@ -1,0 +1,229 @@
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300&display=swap" rel="stylesheet">
+<div class="intro">
+    <style>
+        .logo {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Poppins', sans-serif;
+        }
+
+        header {
+            position: relative;
+            left: 0;
+            top: 0;
+            width: 1005;
+            height: 80px;
+        }
+
+        header h4 {
+            position:absolute;
+            left: 10%;
+            bottom: 1rem;
+            font-size: 1.6rem;
+        }
+
+        /*splash*/
+        .intro{
+            position: fixed;
+            z-index: 1;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100vh;
+            background-color: #161616;
+            transition: 1s;
+        }
+
+        .logo-header{
+            position: absolute;
+            top: 40%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            color: #ffffff;
+        }
+
+        .logo{
+            position: relative;
+            display: inline-block;
+            bottom: -20px;
+            opacity: 0;
+        }
+
+        .logo.active{
+            bottom: 0;
+            opacity: 1;
+            transition: ease-in-out 0.5;
+        }
+
+        .logo.fade{
+            bottom: 150px;
+            opacity: 0;
+            transition: ease-in-out 0.5;
+        }
+    </style>
+
+    <h1 class="logo-header">
+        <span class="logo">Strongdog</span><span class="logo" style="color:orange">XP</span>
+    </h1>
+</div>
+
+<script>
+    let intro = document.querySelector('.intro');
+    let logo = document.querySelector('.logo-header');
+    let logoSpan = document.querySelectorAll('.logo')
+
+    window.addEventListener('DOMContentLoaded', ()=>{
+
+        setTimeout(()=>{
+            logoSpan.forEach((span, idx)=>{
+                setTimeout(()=>{
+                    span.classList.add('active');
+                }, (idx + 1) * 400)
+            })
+
+            setTimeout(()=>{
+                logoSpan.forEach((span, idk)=>{
+                    setTimeout(()=>{
+                        span.classList.remove('active');
+                        span.classList.add('fade');
+                    }, (idx + 1) * 50)
+                })
+            },2000);
+
+            setTimeout(()=>{
+                intro.style.top = '-100vh';
+            }, 2300)
+
+        })
+    })
+</script>
+
+
+<html>
+  <head>
+    <title>TwitchTetris</title>
+    <link href="//fonts.googleapis.com/css?family=VT323" rel="stylesheet" type="text/css" />
+
+    <link href="styles.css" rel="stylesheet" type="text/css" />
+
+    <script src="cookie.js"></script>
+    <script src="gameControls.js"></script>
+
+    <script src="jawsjs.js"></script>
+    <script src="Block.js"></script>
+    <script src="Shapes.js"></script>
+    <script src="WallKicks.js"></script>
+    <script src="ControlGroup.js"></script>
+    <script src="Background.js"></script>
+    <script src="RandomBag.js"></script>
+    <script src="PreviewGroup.js"></script>
+    <script src="ScoreTracker.js"></script>
+    <script src="TtyBlock.js"></script>
+    <script src="Game.js"></script>
+    <script src="Game_Logic.js"></script>
+    <script src="Button.js"></script>
+    <script src="tetris.js"></script>
+
+
+    <script>
+      function onClickEvent(event){
+      if (Tetris.currentInstance) {
+      Tetris.currentInstance.mouseClicked(event.layerX, event.layerY);
+      }
+      }
+    </script>
+
+  </head>
+  <body>
+    <table border="0" class="mainTable">
+      <tr>
+	<td class="menuCell">
+	  <div class="menu">
+	    <img class="menuLogo" src="media/background/logo.png"></img>
+	    <br/><br/>
+
+	    <a href="index.html" class="bareLink">
+	      <div class="menuItem selectedMenuItem">Play TwitchTetris</div>
+	    </a>
+	    <br/>
+	    <a href="controls.html" class="bareLink">
+	      <div class="menuItem">Controls Options</div>
+	    </a>
+	    <br/>
+	    <a href="highScores.html" class="bareLink">
+	      <div class="menuItem">High Scores</div>
+	    </a>
+	    <br/>
+	    <a href="about.html" class="bareLink">
+	      <div class="menuItem">About TwitchTetris</div>
+	    </a>
+	    <br/>
+	    <a href="http://www.leighpauls.com" class="bareLink">
+	      <div class="menuItem">About the Developer</div>
+	    </a>
+	    <br/>
+
+	    <div class="instructions">
+	      <b> &gt TwitchTetris --help </b>
+	      <p>Use the keyboard controls to rotate and move the blocks as they fall</p>
+	      <p>Place the blocks to form horizontal lines, which will be removed and make all the blocks above fall down. If the blocks reach the top of the screen, the game is over!</p>
+	      <p>Clear multiple lines at a time, or clear lines in consective moves to earn more points.</p>
+	    </div>
+
+	  </div>
+	</td>
+	<td class="contentCell">
+	  <div class="gamePanel">
+	
+	    <div class="gameElements">
+	      <div class="ttyOutput scoreOutput" id="scoreDiv"></div>
+	      <div class="ttyOutput linesOutput" id="linesDiv"></div>
+	      <div class="ttyOutput levelOutput" id="levelDiv"></div>
+	      <div class="ttyOutput tickerOutput" id="tickerDiv"></div>
+	      
+	      <div class="gameEndOutputHidden" id="gameEndContainer">
+		<div style="padding:5px;" id="gameEndDiv"></div>
+	      </div>
+	      
+	      <canvas class="gameCanvas" id="gameCanvas" width="600" height="500" onclick="onClickEvent(event)" class="gameCanvas">Your browser does not natively support Html5, or the Canvas Tag. Using this browser is slowing the progress of the web. Please get a modern browser, such as Google Chrome or Mozzila FireFox</canvas>
+	    </div>
+	    <div class="controlsTitle">
+	      <br/>
+	      <b>Controls:</b><br/>
+	      <table border="1" cellpadding="3" class="controlsTable">
+		<tr class="controlsTableHeader">
+		  <td width="80">Move Block</td>
+		  <td width="80">Soft Drop</td>
+		  <td width="80">Rotate</td>
+		  <td width="80">Save Piece</td>
+		  <td width="80">Hard Drop</td>
+		  <td width="80">Pause</td>
+		</tr>
+
+		<tr>
+		  <td><span id="shiftLeft">Left</span>, <span id="shiftRight">Right</span></td>
+		  <td><span id="softDrop">Down</span></td>
+		  <td><span id="rotateLeft">Z</span>, <span id="rotateRight">X, Up</span></td>
+		  <td><span id="swap">C, Shift</span></td>
+		  <td><span id="hardDrop">Space</span></td>
+		  <td>Esc</td>
+		</tr>
+
+	      </table>
+	    </div>
+	    <br/>
+	    <a href="controls.html" class="bareLink">
+	      <div class="menuItem">Controls Options</div>
+	    </a>
+
+	  </div>
+	</td>
+      </tr>
+    </table>
+    
+  </body>
+</html>

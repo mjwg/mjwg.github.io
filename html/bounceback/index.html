@@ -1,0 +1,172 @@
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300&display=swap" rel="stylesheet">
+<div class="intro">
+    <style>
+        .logo {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Poppins', sans-serif;
+        }
+
+        header {
+            position: relative;
+            left: 0;
+            top: 0;
+            width: 1005;
+            height: 80px;
+        }
+
+        header h4 {
+            position:absolute;
+            left: 10%;
+            bottom: 1rem;
+            font-size: 1.6rem;
+        }
+
+        /*splash*/
+        .intro{
+            position: fixed;
+            z-index: 1;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100vh;
+            background-color: #161616;
+            transition: 1s;
+        }
+
+        .logo-header{
+            position: absolute;
+            top: 40%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            color: #ffffff;
+        }
+
+        .logo{
+            position: relative;
+            display: inline-block;
+            bottom: -20px;
+            opacity: 0;
+        }
+
+        .logo.active{
+            bottom: 0;
+            opacity: 1;
+            transition: ease-in-out 0.5;
+        }
+
+        .logo.fade{
+            bottom: 150px;
+            opacity: 0;
+            transition: ease-in-out 0.5;
+        }
+    </style>
+
+    <h1 class="logo-header">
+        <span class="logo">Strongdog</span><span class="logo" style="color:orange">XP</span>
+    </h1>
+</div>
+
+<script>
+    let intro = document.querySelector('.intro');
+    let logo = document.querySelector('.logo-header');
+    let logoSpan = document.querySelectorAll('.logo')
+
+    window.addEventListener('DOMContentLoaded', ()=>{
+
+        setTimeout(()=>{
+            logoSpan.forEach((span, idx)=>{
+                setTimeout(()=>{
+                    span.classList.add('active');
+                }, (idx + 1) * 400)
+            })
+
+            setTimeout(()=>{
+                logoSpan.forEach((span, idk)=>{
+                    setTimeout(()=>{
+                        span.classList.remove('active');
+                        span.classList.add('fade');
+                    }, (idx + 1) * 50)
+                })
+            },2000);
+
+            setTimeout(()=>{
+                intro.style.top = '-100vh';
+            }, 2300)
+
+        })
+    })
+</script>
+
+
+<!doctype html>
+
+<!--
+    Bounce Back ~ A boomerang roguelike for JS13k
+    Copyright (C) 2019 Frank Force
+
+    This program is free software; you can redistribute it and/or modify
+    it under the terms of the GNU General Public License as published by
+    the Free Software Foundation; either version 2 of the License, or
+    (at your option) any later version.
+
+    This program is distributed in the hope that it will be useful,
+    but WITHOUT ANY WARRANTY; without even the implied warranty of
+    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+    GNU General Public License for more details. 
+-->    
+<!--
+    When life gets you down, 
+    it's never too late to...
+
+    B O U N C E B A C K
+
+    A JS13k 2019 Game
+    By Frank Force
+
+    WASD = Move
+    Mouse = Aim
+    Click = Throw
+    Space = Dash
+
+    Hints
+    - You will keep money after you die!
+    - You won't take damage while dashing.
+    - There are 10 levels.
+    - Sand slows down you and enemies.
+    - Yellow boormang can grab pickups.
+    - Blue boomerang does double damage.
+    - Beat the game to unlock speed run mode.
+-->
+
+<html>
+<head>
+<title>Bounce Back</title>
+<style>
+body
+{
+background:#000;
+overflow:hidden;
+margin:0;
+}
+canvas
+{
+width:100%;
+height:100%;
+image-rendering:-moz-crisp-edges;
+image-rendering:pixelated;
+}
+</style>
+</head>
+<body>
+<canvas id=c1></canvas>
+<canvas id=c2 style=visibility:hidden></canvas>
+<script src='gameEngine.js'></script>
+<script src='gameEngineDebug.js'></script>
+<script src='game.js'></script>
+</body>
+</html>

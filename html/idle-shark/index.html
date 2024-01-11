@@ -1,0 +1,232 @@
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300&display=swap" rel="stylesheet">
+<div class="intro">
+    <style>
+        .logo {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Poppins', sans-serif;
+        }
+
+        header {
+            position: relative;
+            left: 0;
+            top: 0;
+            width: 1005;
+            height: 80px;
+        }
+
+        header h4 {
+            position:absolute;
+            left: 10%;
+            bottom: 1rem;
+            font-size: 1.6rem;
+        }
+
+        /*splash*/
+        .intro{
+            position: fixed;
+            z-index: 1;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100vh;
+            background-color: #161616;
+            transition: 1s;
+        }
+
+        .logo-header{
+            position: absolute;
+            top: 40%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            color: #ffffff;
+        }
+
+        .logo{
+            position: relative;
+            display: inline-block;
+            bottom: -20px;
+            opacity: 0;
+        }
+
+        .logo.active{
+            bottom: 0;
+            opacity: 1;
+            transition: ease-in-out 0.5;
+        }
+
+        .logo.fade{
+            bottom: 150px;
+            opacity: 0;
+            transition: ease-in-out 0.5;
+        }
+    </style>
+
+    <h1 class="logo-header">
+        <span class="logo">Strongdog</span><span class="logo" style="color:orange">XP</span>
+    </h1>
+</div>
+
+<script>
+    let intro = document.querySelector('.intro');
+    let logo = document.querySelector('.logo-header');
+    let logoSpan = document.querySelectorAll('.logo')
+
+    window.addEventListener('DOMContentLoaded', ()=>{
+
+        setTimeout(()=>{
+            logoSpan.forEach((span, idx)=>{
+                setTimeout(()=>{
+                    span.classList.add('active');
+                }, (idx + 1) * 400)
+            })
+
+            setTimeout(()=>{
+                logoSpan.forEach((span, idk)=>{
+                    setTimeout(()=>{
+                        span.classList.remove('active');
+                        span.classList.add('fade');
+                    }, (idx + 1) * 50)
+                })
+            },2000);
+
+            setTimeout(()=>{
+                intro.style.top = '-100vh';
+            }, 2300)
+
+        })
+    })
+</script>
+
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <!-- Welcome to a shark. I hope you enjoy this aquatic organism. 
+    It might be very bad-->
+    <title>Idle Shark</title>
+    <meta charset="utf-8" />
+    <meta itemprop="description" name="description" property="og:description" content="A web game about resources, discovery and sharks. Lots of sharks" />
+    <meta property="og:url" content="3kh0.github.io" />
+    <meta itemprop="image" property="og:image" content="img/sharkgame.png" />
+    <meta property="og:image:type" content="image/png" />
+    <meta property="og:image:width" content="200" />
+    <meta property="og:image:height" content="200" />
+    <meta itemprop="name" property="og:title" content="Shark Game" />
+    <link rel="shortcut icon" href="favicon.png" type="image/x-icon" />
+    <link rel="image_src" href="img/sharkgame.png" />
+    <link rel="apple-touch-icon" href="img/sharkgame.png" />
+    <link href="css/style.css" rel="stylesheet" type="text/css" title="default" />
+
+    <!-- custom stylesheets for each world-->
+    <link href="css/abandoned.css" rel="alternate stylesheet" type="text/css" title="abandoned" />
+    <link href="css/chaotic.css" rel="alternate stylesheet" type="text/css" title="chaotic" />
+    <link href="css/frigid.css" rel="alternate stylesheet" type="text/css" title="frigid" />
+    <link href="css/haven.css" rel="alternate stylesheet" type="text/css" title="haven" />
+    <link href="css/shrouded.css" rel="alternate stylesheet" type="text/css" title="shrouded" />
+    <link href="css/tempestuous.css" rel="alternate stylesheet" type="text/css" title="tempestuous" />
+    <link href="css/violent.css" rel="alternate stylesheet" type="text/css" title="violent" />
+
+    <!--[if lt IE 9]>
+      <script src="http://ie7-js.googlecode.com/svn/version/2.1(beta4)/IE9.js"></script>
+    <![endif]-->
+
+    <!-- load frameworks -->
+    <!-- jQuery -->
+    <script type="text/javascript" src="//ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+    <!-- underscore -->
+    <script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/underscore.js/1.13.6/underscore-min.js"></script>
+
+    <script type="text/javascript" src="js/lib/base64-ascii85.js"></script>
+
+    <script type="text/javascript" src="js/lib/pako.js"></script>
+
+    <script type="text/javascript" src="js/main.js"></script>
+    <script type="text/javascript" src="js/util.js"></script>
+
+    <script type="text/javascript" src="js/data/resourcetable.js"></script>
+    <script type="text/javascript" src="js/data/homeactions.js"></script>
+    <script type="text/javascript" src="js/data/worldtypes.js"></script>
+    <script type="text/javascript" src="js/data/upgrades.js"></script>
+    <script type="text/javascript" src="js/data/artifacts.js"></script>
+    <script type="text/javascript" src="js/data/sprites.js"></script>
+
+    <script type="text/javascript" src="js/resources.js"></script>
+    <script type="text/javascript" src="js/world.js"></script>
+    <script type="text/javascript" src="js/log.js"></script>
+    <script type="text/javascript" src="js/save.js"></script>
+    <script type="text/javascript" src="js/settings.js"></script>
+    <script type="text/javascript" src="js/gateway.js"></script>
+
+    <script type="text/javascript" src="js/tabs/home.js"></script>
+    <script type="text/javascript" src="js/tabs/lab.js"></script>
+    <script type="text/javascript" src="js/tabs/stats.js"></script>
+    <script type="text/javascript" src="js/tabs/recycler.js"></script>
+    <script type="text/javascript" src="js/tabs/gate.js"></script>
+    <script type="text/javascript" src="js/tabs/reflection.js"></script>
+
+    <script type="application/javascript" src="/js/main.js"></script>
+  </head>
+  <body>
+    <div id="wrapper">
+      <noscript>
+        <div class="section">
+          <h1>Idle shark??</h1>
+
+          <p>Oh dear! It seems you have Javascript disabled, or that your current browser does not support scripts.</p>
+
+          <p>Shark Game requires scripts to work. Otherwise it's just a static webpage that doesn't do much.</p>
+
+          <div style="margin: auto; width: 20em;">
+            <pre>
+     ,
+       .';
+   .-'` .'
+ ,`.-'-.`\
+; /     '-'
+| \       ,-,
+\  '-.__   )_`'._
+ '.     ```      ``'--._
+.-' ,                   `'-.
+ '-'`-._           ((   o   )  - scripts plz.
+        `'--....(`- ,__..--'     some shark 2021
+                 '-'`
+            </pre>
+          </div>
+        </div>
+      </noscript>
+
+      <div id="game">
+        <div id="title">
+          <h1 id="gameName">- Idle Shark -</h1>
+
+          <div id="titlebar">
+            <ul id="titlemenu"></ul>
+            <ul id="subtitlemenu"></ul>
+          </div>
+        </div>
+        <div id="sidebar">
+          <div id="status"></div>
+          <div id="log"></div>
+        </div>
+        <div id="content"></div>
+        <div class="clear-fix"></div>
+        <div id="overlay"></div>
+        <div id="copyright" class="copyrightNotice">The above variably-named idle shark &copy; <a href="https://github.com/3kh0">3kh0</a>, 2021 to beyond. All rights reserved, Thanks for making the game 3kh0 I dont fully hate you 💖</div>
+        <div id="preloadedImages"></div>
+      </div>
+
+      <!-- 
+
+  Made by 3kh0
+
+  In Memory of Sach. My shark friend, We miss you. <3
+
+-->
+    </div>
+  </body>
+</html>

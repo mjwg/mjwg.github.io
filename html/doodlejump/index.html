@@ -1,0 +1,158 @@
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300&display=swap" rel="stylesheet">
+<div class="intro">
+    <style>
+        .logo {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Poppins', sans-serif;
+        }
+
+        header {
+            position: relative;
+            left: 0;
+            top: 0;
+            width: 1005;
+            height: 80px;
+        }
+
+        header h4 {
+            position:absolute;
+            left: 10%;
+            bottom: 1rem;
+            font-size: 1.6rem;
+        }
+
+        /*splash*/
+        .intro{
+            position: fixed;
+            z-index: 1;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100vh;
+            background-color: #161616;
+            transition: 1s;
+        }
+
+        .logo-header{
+            position: absolute;
+            top: 40%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            color: #ffffff;
+        }
+
+        .logo{
+            position: relative;
+            display: inline-block;
+            bottom: -20px;
+            opacity: 0;
+        }
+
+        .logo.active{
+            bottom: 0;
+            opacity: 1;
+            transition: ease-in-out 0.5;
+        }
+
+        .logo.fade{
+            bottom: 150px;
+            opacity: 0;
+            transition: ease-in-out 0.5;
+        }
+    </style>
+
+    <h1 class="logo-header">
+        <span class="logo">Strongdog</span><span class="logo" style="color:orange">XP</span>
+    </h1>
+</div>
+
+<script>
+    let intro = document.querySelector('.intro');
+    let logo = document.querySelector('.logo-header');
+    let logoSpan = document.querySelectorAll('.logo')
+
+    window.addEventListener('DOMContentLoaded', ()=>{
+
+        setTimeout(()=>{
+            logoSpan.forEach((span, idx)=>{
+                setTimeout(()=>{
+                    span.classList.add('active');
+                }, (idx + 1) * 400)
+            })
+
+            setTimeout(()=>{
+                logoSpan.forEach((span, idk)=>{
+                    setTimeout(()=>{
+                        span.classList.remove('active');
+                        span.classList.add('fade');
+                    }, (idx + 1) * 50)
+                })
+            },2000);
+
+            setTimeout(()=>{
+                intro.style.top = '-100vh';
+            }, 2300)
+
+        })
+    })
+</script>
+
+
+<!doctype html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>HTML5 Doodle Jump</title>
+    <link rel="stylesheet" href="style.css">
+
+    <script src="/assets/js/prefixfree.min.js"></script>
+  </head>
+  <body>
+    <div class="container">
+
+      <canvas id="canvas">
+        Aww, your browser doesn't support HTML5!
+      </canvas>
+
+      <div id="mainMenu">
+        <h1>doodle jump</h1>
+        <h3>using HTML5,</h3>
+        <h3>...by <a href="http://twitter.com/solitarydesigns/" target="_blank">Kushagra Agarwal</a></h3>
+  			<h3>and <a href="http://twitter.com/_rishabhp" target="_blank">Rishabh</a></h3>
+
+        <p class="info">
+          use
+          <span class="key left">←</span>
+          <span class="key right">→</span>
+          to move and space to (re) start...
+        </p>
+        <a class="button" href="javascript:init()">Play</a>
+      </div>
+
+      <div id="gameOverMenu">
+        <h1>game over!</h1>
+        <h3 id="go_score">you scored 0 points</h3>
+
+        <a class="button" href="javascript:reset()">Restart</a>
+        <a id="tweetBtn" target="_blank" class="button tweet" href="#">Tweet score</a>
+
+        <a id="fbBtn" target="_blank" class="button fb" href="#">Post on FB</a>
+      </div>
+
+      <!-- Preloading image ;) -->
+      <img id="sprite" src="sprites.png"/>
+
+      <div id="scoreBoard">
+        <p id="score">0</p>
+      </div>
+
+    </div>
+
+    <script src="main.js"></script>
+  </body>
+</html>

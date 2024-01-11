@@ -1,0 +1,418 @@
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300&display=swap" rel="stylesheet">
+<div class="intro">
+    <style>
+        .logo {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Poppins', sans-serif;
+        }
+
+        header {
+            position: relative;
+            left: 0;
+            top: 0;
+            width: 1005;
+            height: 80px;
+        }
+
+        header h4 {
+            position:absolute;
+            left: 10%;
+            bottom: 1rem;
+            font-size: 1.6rem;
+        }
+
+        /*splash*/
+        .intro{
+            position: fixed;
+            z-index: 1;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100vh;
+            background-color: #161616;
+            transition: 1s;
+        }
+
+        .logo-header{
+            position: absolute;
+            top: 40%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            color: #ffffff;
+        }
+
+        .logo{
+            position: relative;
+            display: inline-block;
+            bottom: -20px;
+            opacity: 0;
+        }
+
+        .logo.active{
+            bottom: 0;
+            opacity: 1;
+            transition: ease-in-out 0.5;
+        }
+
+        .logo.fade{
+            bottom: 150px;
+            opacity: 0;
+            transition: ease-in-out 0.5;
+        }
+    </style>
+
+    <h1 class="logo-header">
+        <span class="logo">Strongdog</span><span class="logo" style="color:orange">XP</span>
+    </h1>
+</div>
+
+<script>
+    let intro = document.querySelector('.intro');
+    let logo = document.querySelector('.logo-header');
+    let logoSpan = document.querySelectorAll('.logo')
+
+    window.addEventListener('DOMContentLoaded', ()=>{
+
+        setTimeout(()=>{
+            logoSpan.forEach((span, idx)=>{
+                setTimeout(()=>{
+                    span.classList.add('active');
+                }, (idx + 1) * 400)
+            })
+
+            setTimeout(()=>{
+                logoSpan.forEach((span, idk)=>{
+                    setTimeout(()=>{
+                        span.classList.remove('active');
+                        span.classList.add('fade');
+                    }, (idx + 1) * 50)
+                })
+            },2000);
+
+            setTimeout(()=>{
+                intro.style.top = '-100vh';
+            }, 2300)
+
+        })
+    })
+</script>
+
+<!DOCTYPE HTML>
+<html>
+<head>
+	<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+	<meta charset="utf-8" />
+	<title>Trader of Stories</title>
+	<meta name="description" content="Trader of Stories is a HTML5 adventure game by the Rudowski brothers. Taking place in the world of The Old Tree that Sleeps, it tells the story of Myosotis." />
+	<meta name="keywords" content="adventure game html5 rudowski brothers trader stories journey myosotis" />
+
+	<link href="https://fonts.googleapis.com/css?family=Kalam:300,400,700&subset=latin-ext" rel="stylesheet" />
+
+	<link rel="icon" href="resources/images/favicon.ico?ver=1.1" />
+	<link rel="shortcut icon" href="resources/images/favicon.ico?ver=1.1" />
+	<link rel="apple-touch-icon" href="resources/images/apple-touch-icon.png?ver=1.1"/>
+
+	<meta name="viewport" content="width=800, height=600, minimum-scale=0.1, initial-scale=0.5" />
+	<meta name="apple-mobile-web-app-capable" content="yes" />
+	<meta name="mobile-web-app-capable" content="yes" />
+	<meta name="apple-mobile-web-app-status-bar-style" content="black" />
+	<meta name="theme-color" content="#000000" />
+	<meta name="format-detection" content="telephone=no" />
+
+	<link rel="stylesheet" href="css/main.css?ver=1.0.3" />
+
+	<script src="components/head/head.js"></script>
+	<script src="engine/main.js?ver=1.0.3"></script>
+
+</head>
+<body>
+	<div id="gem">
+
+		<div id="devTools">
+			<!--<div id="devDialogInspector" class="devTool"></div>-->
+			<div id="devToolBox" class="devTool">
+				<a href="#" id="toolPoi">toggle poi</a>
+				<a href="#" id="toolHiddenPoi">toggle hidden poi</a>
+				<a href="#" id="toolHotspots">toggle hotspots</a>
+			</div>
+			<div id="devInfoBox" class="devTool">
+				<div id="devStateBox"></div>
+				<a href="#" id="resetState">reset</a>
+			</div>
+			<div id="devLocationBox" class="devTool">
+				<select></select>
+			</div>
+		</div>
+
+		<div id="gemViewport">
+
+			<div id="scenes"></div>
+
+			<div id="sceneFx" class="ui-widget-modal"></div>
+
+			<div class="ui-triggers">
+				<div id="menuTrigger" class="ui-trigger interactive"><i></i></div>
+				<div id="notebookTrigger" class="ui-trigger interactive"><i></i></div>
+				<div id="inventoryTrigger" class="ui-trigger interactive"><i></i></div>
+				<div id="mapTrigger" class="ui-trigger interactive"><i></i></div>
+				<div id="helpTrigger" class="ui-trigger interactive"><i></i></div>
+			</div>
+
+			<div id="notebook" class="ui ui-widget-modal ">
+				<div class="ui-modal"></div>
+				<div class="ui-window">
+					<div class="ui-borders"></div>
+					<div class="ui-content">
+						<div class="sectionTitle sectionTitle-1"></div>
+						<div class="sectionTitle sectionTitle-2"></div>
+						<div class="sectionTitle sectionTitle-3"></div>
+						<div class="poiBox">
+							<div class="section section-1"></div>
+							<div class="section section-2"></div>
+							<div class="section section-3"></div>
+						</div>
+					</div>
+				</div>
+			</div>
+
+			<div id="inventory" class="ui ui-widget-modal ">
+				<div class="ui-modal"></div>
+				<div class="ui-window">
+					<div class="ui-borders"></div>
+					<div class="ui-content">
+						<div class="poiBox"></div>
+					</div>
+				</div>
+			</div>
+
+			<div id="text" class="ui ui-widget-modal">
+				<div class="ui-modal"></div>
+				<div class="c2cIcon">
+					<div class="c2cIcon__ripple"></div>
+					<div class="c2cIcon__hand"></div>
+				</div>
+				<div class="ui-content"></div>
+			</div>
+
+			<div id="clickToContinue" class="ui ui-widget-modal">
+				<div class="ui-modal"></div>
+				<div class="ui-content"></div>
+			</div>
+
+			<div id="dialogue" class="ui ui-widget-modal">
+				<div class="ui-modal"></div>
+				<div id="dialoguePortrait"></div>
+				<div id="dialogueName"></div>
+				<div id="dialogueBalloon">
+					<div id="dialogueText"></div>
+					<div id="dialogueBorder"></div>
+					<div id="dialogueType"></div>
+				</div>
+			</div>
+
+			<div id="dialogueOptions" class="ui ui-widget-modal">
+				<div class="ui-modal"></div>
+				<div class="ui-content"></div>
+			</div>
+
+			<div id="actionMenu" class="ui ui-widget-modal">
+				<div class="ui-modal"></div>
+				<div class="ui-window">
+					<div class="ui-borders"></div>
+					<div class="ui-content">
+					</div>
+				</div>
+			</div>
+
+			<div id="mainMenu" class="ui ui-widget-modal">
+				<div class="ui-modal"></div>
+				<div class="ui-content">
+					<div class="title"><div class="subtitle">II</div></div>
+					<div class="menuBox">
+						<div class="btn-continue"></div>
+						<div class="btn-new interactive space-v"></div>
+
+						<div class="btn-load"></div>
+						<div class="btn-import interactive space-v"></div>
+
+						<div class="btn-credits interactive"></div>
+					</div>
+					<div class="options">
+						<div class="options-sound">
+							<span class="label"></span>
+							<span class="btn-radio btn-on"></span>
+							<span class="btn-radio btn-off"></span>
+						</div>
+						<div class="options-lang">
+							<span class="label"></span>
+							<span class="btn-radio btn-en">English</span>
+							<span class="btn-radio btn-de">Deutsch</span>
+							<span class="btn-radio btn-es">Español</span>
+							<span class="btn-radio btn-pl">Polski</span>
+						</div>
+					</div>
+					<div class="supportBox">
+						<span class="supportBox__text"></span>
+						<span class="supportBox__links">
+							<a href="https://www.paypal.me/marekrudowski" class="interactive" target="_blank">paypal</a>
+							<a href="https://www.patreon.com/MarekRudowski" class="interactive" target="_blank">patreon</a>
+						</span>
+						<i class="supportBox__icon"></i>
+					</div>
+					<div class="signatureBox">
+						<div class="socialIcons">
+							<a class="interactive" title="facebook" href="https://www.facebook.com/traderofstories" target="_blank">f</a>
+						</div>
+						<div><span class="gameBy"></span> <span class="separator">|</span> v1.0.3</div>
+					</div>
+				</div>
+			</div>
+
+			<div id="credits" class="ui ui-widget-modal">
+				<div class="ui-modal"></div>
+				<div class="ui-scroll">
+					<div class="ui-content">
+						<div class="text-story">
+							<h2></h2>
+							<span></span>
+						</div>
+						<div class="text-code">
+							<h2></h2>
+							<span></span>
+						</div>
+						<div class="text-music">
+							<h2></h2>
+							<span></span>
+						</div>
+						<div class="text-editor">
+							<h2></h2>
+							<span></span>
+						</div>
+						<div class="text-translationSpanish">
+							<h2></h2>
+							<span></span>
+						</div>
+						<div class="text-translationGerman">
+							<h2></h2>
+							<span></span>
+						</div>
+						<div class="text-thanks">
+							<span></span>
+						</div>
+						<div class="text-date">
+							<h2>2019</h2>
+						</div>
+					</div>
+				</div>
+			</div>
+
+			<div id="inGameMenu" class="ui ui-widget-modal">
+				<div class="ui-modal"></div>
+				<div class="ui-window">
+					<div class="ui-borders"></div>
+					<div class="ui-content">
+						<div class="btnStack">
+							<div class="btn btn-continue interactive"></div>
+							<div class="btn btn-save interactive"></div>
+							<div class="btn btn-export interactive"></div>
+							<div class="btn btn-quit interactive"></div>
+							<!--<div class="btn btn-full interactive">toggle fullscreen</div>-->
+						</div>
+						<div class="options">
+							<div class="options-sound">
+								<span class="label"></span>
+								<span class="btn btn-xs btn-radio btn-on"></span>
+								<span class="btn btn-xs btn-radio btn-off"></span>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+
+			<div id="loadSaveWindow" class="ui ui-widget-modal">
+				<div class="ui-modal"></div>
+				<div class="ui-window">
+					<div class="ui-borders"></div>
+					<div class="ui-content">
+						<div class="prompt"></div>
+						<div class="slots clearfix">
+							<div class="slot slot-auto" data-id="auto"></div>
+							<div class="slot slot-1" data-id="1"></div>
+							<div class="slot slot-2" data-id="2"></div>
+							<div class="slot slot-3" data-id="3"></div>
+						</div>
+						<div class="btn btn-close interactive"></div>
+					</div>
+				</div>
+			</div>
+
+			<div id="importExportWindow" class="ui ui-widget-modal">
+				<div class="ui-modal"></div>
+				<div class="ui-window">
+					<div class="ui-borders"></div>
+					<div class="ui-content">
+						<div class="prompt"></div>
+						<div id="exportView">
+							<div class="btn btn-selectText interactive"></div>
+						</div>
+						<textarea></textarea>
+						<div id="importView" class="ui-windowView">
+							<div class="ui-msg-error"></div>
+							<div class="btn btn-load interactive"></div>
+						</div>
+						<div class="btn btn-close interactive"></div>
+					</div>
+				</div>
+			</div>
+
+			<div id="inputDialog" class="ui ui-widget-modal">
+				<div class="ui-modal"></div>
+				<div class="ui-window">
+					<div class="ui-borders"></div>
+					<div class="ui-content">
+						<div class="prompt"></div>
+						<input type="text" maxlength="20" />
+						<div class="btnCenter">
+							<div class="btn btn-cancel interactive"></div>
+							<div class="btn btn-submit interactive"></div>
+						</div>
+					</div>
+				</div>
+			</div>
+
+			<div id="confirmationDialog" class="ui ui-widget-modal">
+				<div class="ui-modal"></div>
+				<div class="ui-window">
+					<div class="ui-borders"></div>
+					<div class="ui-content">
+						<div class="prompt"></div>
+						<div class="btnCenter">
+							<div class="btn btn-no interactive"></div>
+							<div class="btn btn-yes interactive"></div>
+						</div>
+					</div>
+				</div>
+			</div>
+
+			<div id="loader" class="ui ui-widget-modal">
+				<div class="ui-modal"></div>
+				<div class="loaderIndicator"></div>
+				<div class="loaderInfo"><span>Loading</span> <strong>0%</strong></div>
+			</div>
+
+			<div id="gemLock"></div>
+		</div>
+
+	</div>
+
+	<div id="cookiesInfo">
+		<div class="close">x</div>
+		<div class="prompt"></div>
+	</div>
+</body>
+</html>

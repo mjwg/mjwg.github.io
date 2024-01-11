@@ -1,0 +1,218 @@
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300&display=swap" rel="stylesheet">
+<div class="intro">
+    <style>
+        .logo {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Poppins', sans-serif;
+        }
+
+        header {
+            position: relative;
+            left: 0;
+            top: 0;
+            width: 1005;
+            height: 80px;
+        }
+
+        header h4 {
+            position:absolute;
+            left: 10%;
+            bottom: 1rem;
+            font-size: 1.6rem;
+        }
+
+        /*splash*/
+        .intro{
+            position: fixed;
+            z-index: 1;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100vh;
+            background-color: #161616;
+            transition: 1s;
+        }
+
+        .logo-header{
+            position: absolute;
+            top: 40%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            color: #ffffff;
+        }
+
+        .logo{
+            position: relative;
+            display: inline-block;
+            bottom: -20px;
+            opacity: 0;
+        }
+
+        .logo.active{
+            bottom: 0;
+            opacity: 1;
+            transition: ease-in-out 0.5;
+        }
+
+        .logo.fade{
+            bottom: 150px;
+            opacity: 0;
+            transition: ease-in-out 0.5;
+        }
+    </style>
+
+    <h1 class="logo-header">
+        <span class="logo">Strongdog</span><span class="logo" style="color:orange">XP</span>
+    </h1>
+</div>
+
+<script>
+    let intro = document.querySelector('.intro');
+    let logo = document.querySelector('.logo-header');
+    let logoSpan = document.querySelectorAll('.logo')
+
+    window.addEventListener('DOMContentLoaded', ()=>{
+
+        setTimeout(()=>{
+            logoSpan.forEach((span, idx)=>{
+                setTimeout(()=>{
+                    span.classList.add('active');
+                }, (idx + 1) * 400)
+            })
+
+            setTimeout(()=>{
+                logoSpan.forEach((span, idk)=>{
+                    setTimeout(()=>{
+                        span.classList.remove('active');
+                        span.classList.add('fade');
+                    }, (idx + 1) * 50)
+                })
+            },2000);
+
+            setTimeout(()=>{
+                intro.style.top = '-100vh';
+            }, 2300)
+
+        })
+    })
+</script>
+
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover"
+    />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+
+    <meta name="theme-color" content="#000000" />
+
+    <link rel="manifest" href="./manifest.json" />
+
+    <meta name="mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="application-name" content="Fruit Ninja" />
+    <meta name="apple-mobile-web-app-title" content="Fruit Ninja" />
+    <meta name="msapplication-starturl" content="./" />
+    <script type="text/javascript" src="h5Sdk.js"></script>
+
+    <title>Fruit Ninja</title>
+    <style>
+      @font-face {
+        font-family: gangofchinese;
+        src: url('assets/font/gangofchinese.ttf');
+      }
+
+      body{
+          background-color: #000000;
+          margin: 0;
+
+          height: 100%;
+          max-height: 100vh !important;
+          overflow: hidden;
+          position: relative;
+      }
+
+      .fontLoader{
+          position: absolute;
+          left: -1000px;
+          visibility: hidden;
+      }
+
+      #phaser-canvas{
+          margin: 0 auto;
+      }
+
+      /*#enable3d-three-canvas{
+          position: sticky !important;
+      }*/
+      /*#enable3d-phaser-canvas{
+          margin: 0 auto;
+          position: absolute !important;
+      }*/
+
+      body,#content{
+          height: 100vh !important;
+          max-height: 100vh !important;
+      }
+
+      #divAds, #tempads{
+          display: none;
+          /*background-color: green;*/
+      }
+
+      canvas{
+          width: 100%;
+          height: 100%;
+          display: grid !important;
+          grid-area: 1/1;
+          /*position: sticky !important;*/
+          /*margin: 0 auto !important;*/
+          margin-top: 0 !important;
+          margin-bottom: 0 !important;
+          /*margin-left: auto !important;
+          margin-right: auto !important;*/
+          padding: 0 !important;
+          max-width: 100% !important;
+          max-height: 100vh !important;
+      }
+
+    </style>
+    <!-- <link rel="stylesheet" type="text/css" href="css/styles.css"> -->
+
+    <noscript>Please enable javascript to continue using this application.</noscript>
+
+    <script async
+        data-ad-client="ca-pub-2209834467602790"
+        data-ad-frequency-hint= "30s"
+        src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js">
+    </script>
+    <script>window.adsbygoogle = window.adsbygoogle || [];
+        const adBreak =  adConfig = function(o) {adsbygoogle.push(o);}
+    </script>
+    <!-- installs the serviceWorker -->
+    <!-- <script>
+      if ('serviceWorker' in navigator) {
+        window.addEventListener('load', () => {
+          navigator.serviceWorker.register('./sw.js')
+        })
+      }
+    </script> -->
+  </head>
+  <body>
+    <div class="fontLoader" style="font-family: gangofchinese;">-</div>
+    <div id="content">
+        <div id="phaser-canvas"></div>
+    </div>        
+    <!-- <div id="phaser-game"></div> -->
+  <script type="text/javascript" src="vendors.fb6f2f7c51aa86f87ee3.bundle.js"></script><script type="text/javascript" src="main.bb79cf245c33f6bf6733.bundle.js"></script><style id="injectStyles">html, body{ background: none !important; }</style>
+</body>
+</html>

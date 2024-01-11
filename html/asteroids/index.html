@@ -1,0 +1,138 @@
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300&display=swap" rel="stylesheet">
+<div class="intro">
+    <style>
+        .logo {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Poppins', sans-serif;
+        }
+
+        header {
+            position: relative;
+            left: 0;
+            top: 0;
+            width: 1005;
+            height: 80px;
+        }
+
+        header h4 {
+            position:absolute;
+            left: 10%;
+            bottom: 1rem;
+            font-size: 1.6rem;
+        }
+
+        /*splash*/
+        .intro{
+            position: fixed;
+            z-index: 1;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100vh;
+            background-color: #161616;
+            transition: 1s;
+        }
+
+        .logo-header{
+            position: absolute;
+            top: 40%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            color: #ffffff;
+        }
+
+        .logo{
+            position: relative;
+            display: inline-block;
+            bottom: -20px;
+            opacity: 0;
+        }
+
+        .logo.active{
+            bottom: 0;
+            opacity: 1;
+            transition: ease-in-out 0.5;
+        }
+
+        .logo.fade{
+            bottom: 150px;
+            opacity: 0;
+            transition: ease-in-out 0.5;
+        }
+    </style>
+
+    <h1 class="logo-header">
+        <span class="logo">Strongdog</span><span class="logo" style="color:orange">XP</span>
+    </h1>
+</div>
+
+<script>
+    let intro = document.querySelector('.intro');
+    let logo = document.querySelector('.logo-header');
+    let logoSpan = document.querySelectorAll('.logo')
+
+    window.addEventListener('DOMContentLoaded', ()=>{
+
+        setTimeout(()=>{
+            logoSpan.forEach((span, idx)=>{
+                setTimeout(()=>{
+                    span.classList.add('active');
+                }, (idx + 1) * 400)
+            })
+
+            setTimeout(()=>{
+                logoSpan.forEach((span, idk)=>{
+                    setTimeout(()=>{
+                        span.classList.remove('active');
+                        span.classList.add('fade');
+                    }, (idx + 1) * 50)
+                })
+            },2000);
+
+            setTimeout(()=>{
+                intro.style.top = '-100vh';
+            }, 2300)
+
+        })
+    })
+</script>
+
+
+<html>
+  
+  <head>
+    <script src="jquery-1.4.1.min.js"></script>
+    <script src="vector_battle_regular.typeface.js"></script>
+    <script src="ipad.js"></script>
+    <script src="game.js"></script>
+    <style>
+	  body {background-color: #000;}
+      #canvas { border:1px solid black; top:0px; left:0px; background-color: #fff;}
+      .button { position:absolute; border:1px solid black; }
+      #left-controls { position:absolute; left:1px; bottom:0px; display:none; }
+      #right-controls { position:absolute; right:1px; bottom:0px; display:none; }
+      #up { width:200px; height:100px; bottom:100px;}
+      #left { width:100px; height:100px; bottom:0px;}
+      #right { width:100px; height:100px; bottom:0px; left:100px; }
+      #space { width:200px; height:200px; bottom:0px; right:0px; }
+    </style>
+  </head>
+  <body>
+    <div id="game-container" align="center">
+      <canvas id="canvas" width="780" height="540"></canvas>
+      <div id="left-controls">
+        <div id="up" class='button'>THRUST</div>
+        <div id="left" class='button'>LEFT</div>
+        <div id="right" class='button'>RIGHT</div>
+      </div>
+      <div id="right-controls">
+        <div id="space" class='button'>FIRE</div>
+      </div>
+    </div>
+  </body>
+</html>
